@@ -27,7 +27,7 @@ module.exports = {
         filename: 'scripts/[name].bundle.js'
     },
     devtool: 'source-map',
-    // resolve: { alias: { vue: 'vue/dist/vue.js' } },
+    resolve: { alias: { vue: 'vue/dist/vue.js' } },
     plugins: [
         extractSass,
         uglify
