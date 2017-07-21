@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/dist/app.css" rel="stylesheet" />
+    <link href="/dist/module2.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="demo">
+        <h1>Latest Vue.js Commits</h1>
+        <template v-for="branch in branches">
+            <input type="radio" :id="branch" :value="branch" name="branch" v-model="currentBranch">
+            <label :for="branch">{{ branch }}</label>
+        </template>
+        <p>vuejs/vue@{{ currentBranch }}</p>
+        <ul>
+            <li v-for="record in commits">
+                <a :href="record.html_url" target="_blank" class="commit">{{ record.sha.slice(0, 7) }}</a> - <span class="message">{{ record.commit.message | truncate }}</span><br>                by <span class="author"><a :href="record.author.html_url" target="_blank">{{ record.commit.author.name }}</a></span>                at <span class="date">{{ record.commit.author.date | formatDate }}</span>
+            </li>
+        </ul>
+        <p>{{ message }}</p>
+    </div>
+
+    <a href="/">Back</a>
+
+    <script src="/dist/scripts/module2.bundle.js"></script>
+</body>
+
+</html>
